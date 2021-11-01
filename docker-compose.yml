@@ -1,13 +1,13 @@
 version: '3'
 
 services:
-  pgsql: 'nome do container
-    image: postgres:alpine versão que eu quero trabalhar
+  pgsql:
+    image: 'postgres:alpine'
     ports:
       - '5432:5432'
     container_name: 'pgsql'
     restart: always
-    volumes: 
+    volumes:
       - pg-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: pguser
