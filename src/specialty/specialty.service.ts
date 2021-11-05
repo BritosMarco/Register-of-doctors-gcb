@@ -37,7 +37,7 @@ export class SpecialtyService {
     });
 
     if (!specialties)
-      throw new NotFoundException('especialidades não encontrada');
+      throw new NotFoundException('especialidades não encontradas');
 
     return specialties;
   }

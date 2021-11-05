@@ -8,7 +8,6 @@ import { CreateDoctorDto } from './dto/create-doctors.dto';
 import { DoctorsRepository } from './doctors.repository';
 import { Doctors } from './doctors.entity';
 import { SpecialtyRepository } from 'src/specialty/specialty.repository';
-import { Specialty } from 'src/specialty/specialty.entity';
 
 @Injectable()
 export class DoctorsService {
@@ -36,7 +35,7 @@ export class DoctorsService {
       select: ['name', 'id', 'crm'],
     });
 
-    if (!doctors) throw new NotFoundException('especialidades não encontrada');
+    if (!doctors) throw new NotFoundException('Profissionais  não encontrados');
 
     return doctors;
   }
