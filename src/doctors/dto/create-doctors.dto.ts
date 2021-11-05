@@ -2,38 +2,35 @@ import {
   IsNotEmpty,
   IsNumber,
   MaxLength,
-  Length,
   IsOptional,
+  MinLength,
 } from 'class-validator';
+import { Specialty } from 'src/specialty/specialty.entity';
 
 export class CreateDoctorDto {
   @IsNotEmpty({ message: 'Informe o nome' })
+  @MinLength(2, { message: 'Nome deve ter no minimo 2 caracteres' })
   @MaxLength(120, {
     message: 'O nome deve ter menos de 120 carcateres',
   })
   name: string;
 
   @IsNumber()
-  @IsNotEmpty({ message: 'Informe o CRM, somente números' })
-  @MaxLength(7, { message: 'CRM máximo 7 caracteres' })
+  @IsNotEmpty()
   crm: number;
 
   @IsNumber()
-  @IsOptional({ message: 'Informe o telefone, somente números' })
-  @MaxLength(11, { message: 'Telefone máximo 11 caracteres' })
+  @IsOptional()
   phone: number;
 
   @IsNumber()
-  @IsNotEmpty({ message: 'Informe o telefone celular, somente números' })
-  @MaxLength(11, { message: 'Telefone máximo 11 caracteres' })
+  @IsNotEmpty()
   celphone: number;
 
   @IsNumber()
-  @IsOptional({ message: 'Informe o cep, somente números' })
-  @Length(8, 8, { message: 'informe o cep com 8 caracteres' })
+  @IsOptional()
   cep: number;
 
   @IsNotEmpty()
-  @IsNumber()
-  specialty: number;
+  specialtyId: Specialty;
 }

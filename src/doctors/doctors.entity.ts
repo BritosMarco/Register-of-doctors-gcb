@@ -5,7 +5,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
+import { Specialty } from 'src/specialty/specialty.entity';
+
 
 @Entity()
 export class Doctors extends BaseEntity {
@@ -15,16 +19,16 @@ export class Doctors extends BaseEntity {
   @Column({ nullable: false, type: 'varchar', length: 120 })
   name: string;
 
-  @Column({ nullable: false, type: 'int', length: 7 })
+  @Column({ unique: true })
   crm: number;
 
-  @Column({ type: 'int', length: 11 })
+  @Column({ type: 'int' })
   phone: number;
 
-  @Column({ nullable: false, type: 'int', length: 11 })
+  @Column()
   celphone: number;
 
-  @Column({ nullable: false, type: 'int', length: 8 })
+  @Column()
   cep: number;
 
   @CreateDateColumn()
@@ -33,6 +37,7 @@ export class Doctors extends BaseEntity {
   @UpdateDateColumn()
   updatedAd: Date;
 
-  @Column()
-  specialty: number;
+  @OneToOne(() => Specialty)
+  @JoinColumn()
+  specialtyId: Specialty;
 }
