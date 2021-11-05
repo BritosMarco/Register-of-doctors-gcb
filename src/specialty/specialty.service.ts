@@ -31,7 +31,7 @@ export class SpecialtyService {
     return specialty;
   }
 
-  async findSpecialtyAll(): Promise<Specialty> {
+  async findSpecialtyAll(): Promise<Specialty[]> {
     const specialties = await this.specialtyRepository.find({
       select: ['name', 'id'],
     });
@@ -39,7 +39,7 @@ export class SpecialtyService {
     if (!specialties)
       throw new NotFoundException('especialidades não encontrada');
 
-    return;
+    return specialties;
   }
 
   async updateSpecialty(

@@ -40,6 +40,16 @@ export class DoctorsController {
     };
   }
 
+  @Get()
+  async findDoctorsAll() {
+    const found = await this.doctorsService.findDoctorsAll();
+
+    return {
+      found,
+      message: 'Profissionais encontradas',
+    };
+  }
+
   @Patch(':id')
   async updateDoctor(
     @Body(ValidationPipe) updateDoctorDto: CreateDoctorDto,

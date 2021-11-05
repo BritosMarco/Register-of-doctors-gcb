@@ -6,7 +6,6 @@ import {
   Body,
   ValidationPipe,
   Delete,
-
 } from '@nestjs/common';
 import { CreateSpecialtyDto } from './dto/create-specialty.dto';
 import { SpecialtyService } from './specialty.service';

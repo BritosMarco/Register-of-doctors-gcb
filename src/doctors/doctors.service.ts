@@ -31,14 +31,14 @@ export class DoctorsService {
     return doctor;
   }
 
-  async findSpecialtyId(specialtyId: string): Promise<Specialty> {
-    const specialty = await this.specialtyRepository.findOne(specialtyId, {
-      select: ['name', 'id'],
+  async findDoctorsAll(): Promise<Doctors[]> {
+    const doctors = await this.doctorsRepository.find({
+      select: ['name', 'id', 'crm'],
     });
 
-    if (!specialty) throw new NotFoundException('especialidade não encontrada');
+    if (!doctors) throw new NotFoundException('especialidades não encontrada');
 
-    return specialty;
+    return doctors;
   }
 
   async updateDoctor(
