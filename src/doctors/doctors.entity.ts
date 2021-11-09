@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 import { Specialty } from 'src/specialty/specialty.entity';
 
-
 @Entity()
 export class Doctors extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -37,7 +36,9 @@ export class Doctors extends BaseEntity {
   @UpdateDateColumn()
   updatedAd: Date;
 
-  @OneToOne(() => Specialty)
+  @OneToOne(() => Specialty, (specialty) => specialty.doctors, {
+    eager: true,
+  })
   @JoinColumn()
-  specialtyId: Specialty;
+  specialty: Specialty;
 }

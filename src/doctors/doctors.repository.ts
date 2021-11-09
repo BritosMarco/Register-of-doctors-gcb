@@ -18,12 +18,11 @@ export class DoctorsRepository extends Repository<Doctors> {
     doctors.phone = phone;
     doctors.celphone = celphone;
     doctors.cep = cep;
-    doctors.specialtyId = specialtyId;
+    doctors.specialty = specialtyId;
 
     try {
       await doctors.save();
       return doctors;
-
     } catch (error) {
       if (error.code.toString() === '23505') {
         throw new ConflictException('CRM Já cadastrado');

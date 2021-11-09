@@ -1,10 +1,12 @@
 import { IsString } from 'class-validator';
+import { Doctors } from 'src/doctors/doctors.entity';
 import {
   BaseEntity,
   Entity,
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  OneToOne,
   Unique,
 } from 'typeorm';
 
@@ -19,4 +21,7 @@ export class Specialty extends BaseEntity {
 
   @CreateDateColumn()
   createdAd: Date;
+
+  @OneToOne(() => Doctors, (doctors) => doctors.specialty)
+  doctors: Doctors;
 }

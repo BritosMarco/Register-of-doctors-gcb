@@ -23,16 +23,16 @@ export class DoctorsService {
 
   async findDoctorId(doctorId: string): Promise<Doctors> {
     const doctor = await this.doctorsRepository.findOne(doctorId, {
-      select: ['name', 'crm', 'phone', 'celphone', 'cep', 'specialtyId', 'id'],
+      relations: ['specialty'],
+      select: ['name', 'crm', 'phone', 'celphone', 'cep', 'specialty', 'id'],
     });
-
     if (!doctor) throw new NotFoundException('Profissional não encontrado');
     return doctor;
   }
 
   async findDoctorsAll(): Promise<Doctors[]> {
     const doctors = await this.doctorsRepository.find({
-      select: ['name', 'id', 'crm'],
+      select: ['name', 'id', 'crm', 'specialty'],
     });
 
     if (!doctors) throw new NotFoundException('Profissionais  não encontrados');
@@ -53,7 +53,7 @@ export class DoctorsService {
     doctor.phone = phone ? phone : doctor.phone;
     doctor.celphone = celphone ? celphone : doctor.celphone;
     doctor.cep = cep ? cep : doctor.cep;
-    doctor.specialtyId = specialtyId ? specialtyId : doctor.specialtyId;
+    doctor.specialty = specialtyId ? specialtyId : doctor.specialty;
 
     try {
       await doctor.save();
