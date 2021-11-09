@@ -12,6 +12,7 @@ import { CreateDoctorDto } from './dto/create-doctors.dto';
 import { DoctorsService } from './doctors.service';
 import { ReturnDoctorsDto } from './dto/return-doctors.dto';
 import { SpecialtyService } from 'src/specialty/specialty.service';
+import { SoftDeleteQueryBuilder } from 'typeorm/query-builder/SoftDeleteQueryBuilder';
 
 @Controller('doctors')
 export class DoctorsController {

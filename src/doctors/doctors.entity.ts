@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   OneToOne,
   JoinColumn,
+  DeleteDateColumn,
 } from 'typeorm';
 import { Specialty } from 'src/specialty/specialty.entity';
 
@@ -41,4 +42,7 @@ export class Doctors extends BaseEntity {
   })
   @JoinColumn()
   specialty: Specialty;
+
+  @DeleteDateColumn()
+  deleteId: Date;
 }

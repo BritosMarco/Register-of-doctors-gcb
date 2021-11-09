@@ -66,7 +66,7 @@ export class DoctorsService {
   }
 
   async deleteDoctor(doctorId: string) {
-    const result = await this.doctorsRepository.delete({ id: doctorId });
+    const result = await this.doctorsRepository.softDelete({ id: doctorId });
 
     if (result.affected === 0) {
       throw new NotFoundException(
